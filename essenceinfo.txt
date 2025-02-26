@@ -1,13 +1,9 @@
 {
     "Essence of Horror": [
-        "13.6",
+        "13.0",
         3.0
     ],
     "Essence of Delirium": [
-        "11.0",
-        3.0
-    ],
-    "Essence of Insanity": [
         "11.0",
         3.0
     ],
@@ -15,47 +11,35 @@
         "10.0",
         3.0
     ],
+    "Essence of Insanity": [
+        "10.0",
+        3.0
+    ],
     "Deafening Essence of Sorrow": [
-        "6.1",
+        "5.4",
         3.0
     ],
     "Deafening Essence of Envy": [
-        "3.8",
+        "3.9",
         3.0
     ],
     "Deafening Essence of Wrath": [
-        "3.1",
+        "2.7",
         3.0
     ],
     "Deafening Essence of Zeal": [
-        "2.8",
+        "2.7",
         3.0
     ],
     "Deafening Essence of Scorn": [
-        "2.3",
-        3.0
-    ],
-    "Deafening Essence of Woe": [
-        "2.2",
-        3.0
-    ],
-    "Deafening Essence of Loathing": [
-        "2.2",
-        3.0
-    ],
-    "Deafening Essence of Rage": [
-        "2.2",
-        3.0
-    ],
-    "Deafening Essence of Spite": [
         "2.1",
         3.0
     ],
-    "Deafening Essence of Contempt": [
+    "Deafening Essence of Spite": [
         "2.0",
         3.0
     ],
-    "Deafening Essence of Hatred": [
+    "Deafening Essence of Loathing": [
         "2.0",
         3.0
     ],
@@ -71,68 +55,68 @@
         "2.0",
         3.0
     ],
-    "Deafening Essence of Anger": [
+    "Deafening Essence of Rage": [
+        "2.0",
+        3.0
+    ],
+    "Deafening Essence of Woe": [
         "1.9",
         3.0
     ],
-    "Deafening Essence of Misery": [
+    "Deafening Essence of Contempt": [
         "1.9",
         3.0
     ],
-    "Deafening Essence of Torment": [
-        "1.9",
-        3.0
-    ],
-    "Deafening Essence of Dread": [
+    "Deafening Essence of Hatred": [
         "1.8",
         3.0
     ],
     "Deafening Essence of Fear": [
-        "1.8",
+        "1.7",
         3.0
     ],
     "Deafening Essence of Greed": [
-        "1.8",
+        "1.7",
         3.0
     ],
-    "Deafening Essence of Suffering": [
-        "1.7",
+    "Deafening Essence of Misery": [
+        "1.6",
+        3.0
+    ],
+    "Deafening Essence of Anger": [
+        "1.6",
+        3.0
+    ],
+    "Deafening Essence of Dread": [
+        "1.5",
         3.0
     ],
     "Deafening Essence of Doubt": [
-        "1.7",
+        "1.5",
+        3.0
+    ],
+    "Deafening Essence of Torment": [
+        "1.5",
         3.0
     ],
     "Deafening Essence of Anguish": [
-        "1.5",
+        "1.4",
         3.0
     ],
-    "Shrieking Essence of Spite": [
-        "1.5",
-        3.0
-    ],
-    "Shrieking Essence of Woe": [
-        "1.5",
+    "Deafening Essence of Suffering": [
+        "1.4",
         3.0
     ],
     "Shrieking Essence of Scorn": [
-        "1.5",
-        3.0
-    ],
-    "Shrieking Essence of Contempt": [
         "1.3",
         3.0
     ],
-    "Shrieking Essence of Rage": [
+    "Shrieking Essence of Woe": [
         "1.2",
         3.0
     ],
-    "Shrieking Essence of Anger": [
+    "Shrieking Essence of Contempt": [
         "1.1",
-        3.0
-    ],
-    "Shrieking Essence of Hatred": [
-        "1.0",
         3.0
     ],
     "Muttering Essence of Anger": [
@@ -175,25 +159,13 @@
         "1.0",
         3.0
     ],
-    "Screaming Essence of Anguish": [
-        "1.0",
-        3.0
-    ],
-    "Screaming Essence of Doubt": [
-        "1.0",
-        3.0
-    ],
-    "Screaming Essence of Dread": [
-        "1.0",
-        3.0
-    ],
     "Screaming Essence of Envy": [
         "1.0",
         3.0
     ],
     "Screaming Essence of Fear": [
         "1.0",
-        14.0
+        3.0
     ],
     "Screaming Essence of Greed": [
         "1.0",
@@ -247,6 +219,10 @@
         "1.0",
         3.0
     ],
+    "Shrieking Essence of Anger": [
+        "1.0",
+        3.0
+    ],
     "Shrieking Essence of Anguish": [
         "1.0",
         3.0
@@ -267,11 +243,23 @@
         "1.0",
         3.0
     ],
+    "Shrieking Essence of Hatred": [
+        "1.0",
+        3.0
+    ],
     "Shrieking Essence of Loathing": [
         "1.0",
         3.0
     ],
     "Shrieking Essence of Misery": [
+        "1.0",
+        3.0
+    ],
+    "Shrieking Essence of Rage": [
+        "1.0",
+        3.0
+    ],
+    "Shrieking Essence of Spite": [
         "1.0",
         3.0
     ],
@@ -415,8 +403,20 @@
         "1.0",
         3.0
     ],
-    "Screaming Essence of Contempt": [
+    "Screaming Essence of Doubt": [
         "1.0",
+        3.0
+    ],
+    "Screaming Essence of Dread": [
+        "1.0",
+        3.0
+    ],
+    "Screaming Essence of Anguish": [
+        "0.9",
+        3.0
+    ],
+    "Screaming Essence of Contempt": [
+        "0.9",
         3.0
     ]
 }

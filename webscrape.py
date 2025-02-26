@@ -41,7 +41,7 @@ def initiate_browser():
     return html_content
 
 # Parse table data in html content and create dictionary with key equaling the essence and value equaling its chaos value
-def create_essence_dictionary():
+def create_essence_dictionary_if_doesnt_exist():
     if check_if_dict_exists():
         return "Essence Dictionary already exists"
     html_content = initiate_browser()
