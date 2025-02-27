@@ -40,75 +40,44 @@ def initiate_browser():
     driver.quit()
     return html_content
 
-# Parse table data in html content and create dictionary with key equaling the essence and value equaling its chaos value
-def create_essence_dictionary_if_doesnt_exist():
-    if check_if_dict_exists():
-        return "Essence Dictionary already exists"
-    html_content = initiate_browser()
+# returned rows are not text. Rows is a list of beautiful soup objects whose text can be access via .get_text() method. Its type is "<class 'bs4.element.Tag'>""
+def parse_raw_html_into_rows(html_content):
     soup = BeautifulSoup(html_content, 'lxml')
     rows = soup.find_all('tr')[1:]
+    return rows
+
+
+def parse_rows_into_dictionary_entries(rows_of_html):
     ess_dict = {}
-    for row in rows:
+    for row in rows_of_html:
         row_text = row.get_text(strip=True)
         row_text = row_text.replace("wiki", "")
         modified_row = re.split(r'(\d+)', row_text, maxsplit=1)
 
         essence_name = modified_row[0]
 
-        if len(modified_row) != 3:
+        if row == None:
             break
         else:
-            delim = "Not enough data"
-            if delim in "".join(modified_row[1:]):
-                chaos_value = re.split(f"{delim}", "".join(modified_row[1:]), maxsplit=1)
-                ess_dict[essence_name] = [chaos_value[0][1:], 3.0]
-
-            elif "+" in "".join(modified_row[1:]):
-                chaos_value = re.split(r"\+", "".join(modified_row[1:]), maxsplit=1)
-                ess_dict[essence_name] = [chaos_value[0][1:], 3.0]
-
+            # need to fix this logic to just check if there is only one digit ahead of decimal, if so then dont slice the result.
+            if essence_name == "Remnant of Corruption":
+                match = re.search(r'\d+\.\d', "".join(modified_row[1:]))
+                result = match.group()
+                chaos_value = result
+                ess_dict[essence_name] = [chaos_value, 3.0]
             else:
-                if "-" in "".join(modified_row[1:]):
-                    chaos_value = re.split(r"-", "".join(modified_row[1:]), maxsplit=1)
-                    ess_dict[essence_name] = [chaos_value[0][1:], 3.0]
+                match = re.search(r'\d+\.\d', "".join(modified_row[1:]))
+                result = match.group()
+                chaos_value = result[1:]
+                ess_dict[essence_name] = [chaos_value, 3.0]
+    return ess_dict
 
-                else:
-                    chaos_value = re.split(r'(?<=0)', "".join(modified_row[1:]), maxsplit=1)
-                    ess_dict[essence_name] = [chaos_value[0][1:], 3.0]
+# Parse table data in html content and create dictionary with key equaling the essence and value equaling its chaos value
+def get_new_poe_pricing():
+    html_content = initiate_browser()
+    rows = parse_raw_html_into_rows(html_content)
+    ess_dict = parse_rows_into_dictionary_entries(rows)
     save_dict_to_file(ess_dict)
     return
 
-
-def get_new_poe_pricing():
-    html_content = initiate_browser()
-    soup = BeautifulSoup(html_content, 'lxml')
-    rows = soup.find_all('tr')[1:]
-    ess_dict = {}
-    for row in rows:
-        row_text = row.get_text(strip=True)
-        row_text = row_text.replace("wiki", "")
-        modified_row = re.split(r'(\d+)', row_text, maxsplit=1)
-
-        essence_name = modified_row[0]
-
-        if len(modified_row) != 3:
-            break
-        else:
-            delim = "Not enough data"
-            if delim in "".join(modified_row[1:]):
-                chaos_value = re.split(f"{delim}", "".join(modified_row[1:]), maxsplit=1)
-                ess_dict[essence_name] = chaos_value[0][1:]
-
-            elif "+" in "".join(modified_row[1:]):
-                chaos_value = re.split(r"\+", "".join(modified_row[1:]), maxsplit=1)
-                ess_dict[essence_name] = chaos_value[0][1:]
-            else:
-                if "-" in "".join(modified_row[1:]):
-                    chaos_value = re.split(r"-", "".join(modified_row[1:]), maxsplit=1)
-                    ess_dict[essence_name] = chaos_value[0][1:]
-
-                else:
-                    chaos_value = re.split(r'(?<=0)', "".join(modified_row[1:]), maxsplit=1)
-                    ess_dict[essence_name] = chaos_value[0][1:]
-    return ess_dict
 

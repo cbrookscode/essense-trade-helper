@@ -1,6 +1,7 @@
 from webscrape import get_new_poe_pricing
 from filemod import *
 
+# should this be create price sheet and then store the information in a text f ile that can be viewed at will and then updated with another function?
 def print_price_sheet():
     ess_dict = open_dict()
     if not ess_dict:
@@ -34,8 +35,8 @@ def update_multiplier():
     
     user_input_ess_name = input("Enter essence name you want to update: ")
     user_input_last_sale_price = input("Enter listing price (ex. 65/5): ")
-
     parsed_input = user_input_last_sale_price.split('/', 1)
+
     num_sold = float(parsed_input[0])
     total_chaos = float(parsed_input[1])
     bulk_price_per_essence = num_sold/total_chaos
@@ -55,6 +56,6 @@ def update_ess_dict_with_new_poeninja_pricing():
     
     new_values_dict = get_new_poe_pricing()
     for key in ess_dict.keys():
-        ess_dict[key][0] = new_values_dict[key]
+        ess_dict[key][0] = new_values_dict[key][0]
     save_dict_to_file(ess_dict)
     return

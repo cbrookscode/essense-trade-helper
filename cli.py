@@ -14,6 +14,12 @@ def implement_user_options(user_input):
         return "nothing"
     elif user_input == "5":
         return 0
+    
+def check_if_valid_user_input(user_input):
+    valid = ["1", "2", "3", "4", "5"]
+    if user_input not in valid:
+        return False
+    return True
 
 def menu_text():
     print("Hello! Welcome to Essence Trade Manager! See below for the list of options to select. Use numbers 1-5 for your input selections.")
@@ -27,9 +33,17 @@ def menu_text():
 
 def program_loop():
     i = 1
+    seperator = "=============================================================================="
     while i == 1:
         menu_text()
         user_input = input("Which option would you like to select? ")
-        check = implement_user_options(user_input)
-        if check == 0:
-            break
+        if check_if_valid_user_input(user_input):
+            print(seperator)
+            check = implement_user_options(user_input)
+            print(seperator)
+            if check == 0:
+                break
+        else:
+            print(seperator)
+            print("ERROR: Not a valid option. Enter a number 1-5")
+            print(seperator)

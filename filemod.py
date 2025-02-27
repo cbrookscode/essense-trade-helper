@@ -10,6 +10,7 @@ def check_if_dict_exists():
     if os.path.exists('./essenceinfo.txt'):
         return True
     return False
+
 def open_dict():
     ess_dict = {}
     if check_if_dict_exists:
