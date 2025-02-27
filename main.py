@@ -16,6 +16,6 @@ if __name__ == '__main__':
 
 
 
-# create unit tests
-# Fix holes in existing logic
 # Add last remaining function in options list
+# Sort data prior to storing in dictionary?
+# store price sheet in text file? Store it in same fashion as essence tab for viewing?

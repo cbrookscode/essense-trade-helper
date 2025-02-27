@@ -59,3 +59,19 @@ def update_ess_dict_with_new_poeninja_pricing():
         ess_dict[key][0] = new_values_dict[key][0]
     save_dict_to_file(ess_dict)
     return
+
+def three_to_one(ess_dict):
+    pass
+
+'''
+only need to check upgrading screaming > shrieking and shrieking > deafening
+
+create empty tracked list
+iterate over dictionary keys excluding special essences and remnants
+filter out base essence name
+if base essence name has been tracked then skip.
+    create string name key to search for bulksale values of screaming, shrieking, deafening
+    perform calcs to determine if should 3>1 at any stage in the above
+    print(upgrad screamings or upgrade shriekings or both)
+    move base essence name to tracked list
+'''
