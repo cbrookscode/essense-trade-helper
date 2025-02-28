@@ -56,7 +56,7 @@
         3.0
     ],
     "Deafening Essence of Spite": [
-        "2.0",
+        "1.9",
         3.0
     ],
     "Deafening Essence of Suffering": [
@@ -72,7 +72,7 @@
         3.0
     ],
     "Deafening Essence of Wrath": [
-        "1.9",
+        "2.0",
         3.0
     ],
     "Deafening Essence of Zeal": [
@@ -200,7 +200,7 @@
         3.0
     ],
     "Shrieking Essence of Envy": [
-        "1.0",
+        "1.4",
         3.0
     ],
     "Shrieking Essence of Fear": [
@@ -217,7 +217,7 @@
     ],
     "Shrieking Essence of Loathing": [
         "1.0",
-        3.0
+        15.0
     ],
     "Shrieking Essence of Misery": [
         "1.0",

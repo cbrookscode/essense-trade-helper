@@ -27,7 +27,7 @@ def menu_text():
     print("1. See price Sheet")
     print("2. Update essence price sheet")
     print("3. Update database with new poe ninja price per essence")
-    print("4. 3-1 suggestions (Out of Order, sorry!)")
+    print("4. 3-1 suggestions")
     print("5. Exit")
     return
 

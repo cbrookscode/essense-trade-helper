@@ -36,19 +36,25 @@ def update_multiplier():
     
     user_input_ess_name = input("Enter essence name you want to update: ")
     user_input_last_sale_price = input("Enter listing price (ex. 65/5): ")
-    parsed_input = user_input_last_sale_price.split('/', 1)
 
-    num_sold = float(parsed_input[0])
-    total_chaos = float(parsed_input[1])
-    bulk_price_per_essence = num_sold/total_chaos
+    pattern = r"^\d+/\d+$"
+    match = re.match(pattern, user_input_last_sale_price)
 
-    key = search_essence_name(user_input_ess_name)
-    if key != "not found":
-        ess_dict[key][1] = bulk_price_per_essence/float(ess_dict[key][0])
-        save_dict_to_file(ess_dict)
-        return f"{key}'s multiplier has been updated"
-    else:
-        return "Essence doesn't exist or was typed incorrectly"
+    if match:
+        parsed_input = user_input_last_sale_price.split('/', 1)
+
+        num_sold = float(parsed_input[0])
+        total_chaos = float(parsed_input[1])
+        bulk_price_per_essence = num_sold/total_chaos
+
+        key = search_essence_name(user_input_ess_name)
+        if key != "not found":
+            ess_dict[key][1] = bulk_price_per_essence/float(ess_dict[key][0])
+            save_dict_to_file(ess_dict)
+            print(f"{key}'s multiplier has been updated")
+        else:
+            print("Essence doesn't exist or was typed incorrectly")
+    return print("wrong format for last sale price. ex. 75/5")
 
 def update_ess_dict_with_new_poeninja_pricing():
     ess_dict = open_dict()
