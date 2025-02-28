@@ -37,9 +37,10 @@ def update_multiplier():
     user_input_ess_name = input("Enter essence name you want to update: ")
     user_input_last_sale_price = input("Enter listing price (ex. 65/5): ")
 
-    pattern = r"^\d+/\d+$"
-    match = re.match(pattern, user_input_last_sale_price)
+    user_input_sale_pattern = r"^\d+/\d+$"
+    match = re.match(user_input_sale_pattern, user_input_last_sale_price)
 
+    # if there is a pattern match. then user sale price is valid.
     if match:
         parsed_input = user_input_last_sale_price.split('/', 1)
 
