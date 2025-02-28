@@ -11,7 +11,7 @@ def implement_user_options(user_input):
         update_ess_dict_with_new_poeninja_pricing()
         return
     elif user_input == "4":
-        return "nothing"
+        return three_to_one()
     elif user_input == "5":
         return 0
     

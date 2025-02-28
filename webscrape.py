@@ -30,9 +30,16 @@ def initiate_browser():
     #dynamically wait (max of 30 seconds) till body tagged html elements load.
     WebDriverWait(driver, 30).until(EC.presence_of_all_elements_located ((By.TAG_NAME, "tr")))
 
-    button = driver.find_element(By.XPATH, '//button[text()="Show more"]')
+    # Wait for the "Show more" button to be clickable
+    button = WebDriverWait(driver, 30).until(
+        EC.element_to_be_clickable((By.XPATH, '//button[text()="Show more"]'))
+    )
     button.click()
-    time.sleep(3)
+
+    # Wait again for the button to be clickable before clicking again
+    button = WebDriverWait(driver, 30).until(
+        EC.element_to_be_clickable((By.XPATH, '//button[text()="Show more"]'))
+    )
     button.click()
 
 
@@ -40,24 +47,46 @@ def initiate_browser():
     driver.quit()
     return html_content
 
-# returned rows are not text. Rows is a list of beautiful soup objects whose text can be access via .get_text() method. Its type is "<class 'bs4.element.Tag'>""
+def filter_out_essences(sorted_rows_html):
+    new_sorted_list = []
+    prefixes_to_avoid = ["Wailing", "Weeping", "Whispering", "Muttering"]
+    for row in sorted_rows_html:
+        tracker = False
+        if row == None:
+            continue
+
+        for prefix in prefixes_to_avoid:
+            if prefix in row:
+                tracker = True
+                continue
+        if tracker:
+            continue
+        new_sorted_list.append(row)
+    return new_sorted_list
+
+
+
 def parse_raw_html_into_rows(html_content):
     soup = BeautifulSoup(html_content, 'lxml')
     rows = soup.find_all('tr')[1:]
-    return rows
-
-
-def parse_rows_into_dictionary_entries(rows_of_html):
-    ess_dict = {}
-    for row in rows_of_html:
+    rows_text = []
+    for row in rows:
         row_text = row.get_text(strip=True)
-        row_text = row_text.replace("wiki", "")
+        rows_text.append(row_text)
+    sorted_rows_text = sorted(rows_text)
+    return sorted_rows_text
+
+
+def parse_rows_into_dictionary_entries(sorted_rows_html):
+    ess_dict = {}
+    for row in sorted_rows_html:
+        row_text = row.replace("wiki", "")
         modified_row = re.split(r'(\d+)', row_text, maxsplit=1)
 
         essence_name = modified_row[0]
 
         if row == None:
-            break
+            continue
         else:
             # need to fix this logic to just check if there is only one digit ahead of decimal, if so then dont slice the result.
             if essence_name == "Remnant of Corruption":
@@ -76,8 +105,8 @@ def parse_rows_into_dictionary_entries(rows_of_html):
 def get_new_poe_pricing():
     html_content = initiate_browser()
     rows = parse_raw_html_into_rows(html_content)
-    ess_dict = parse_rows_into_dictionary_entries(rows)
-    save_dict_to_file(ess_dict)
-    return
+    filtered_ess_rows = filter_out_essences(rows)
+    ess_dict = parse_rows_into_dictionary_entries(filtered_ess_rows)
+    return ess_dict
 
 
